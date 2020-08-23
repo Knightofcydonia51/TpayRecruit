@@ -1,15 +1,31 @@
 from rest_framework import serializers
-from .models import Product
+from .models import Product, ProductOption, Tag
+from drf_writable_nested.serializers import WritableNestedModelSerializer
 
 
-class ProductSerializer(serializers.ModelSerializer):
+class ProductOptionSerializer(serializers.ModelSerializer):
+
+    # product = ProductSerializer(read_only=True)
+
+    class Meta:
+        model = ProductOption
+        fields = ['pk', 'name', 'price']
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ['pk', 'name']
+
+
+class ProductSerializer(WritableNestedModelSerializer):
+    
+
+
+    option_set = ProductOptionSerializer(many=True)
+    tag_set = TagSerializer(many=True)
+    
     class Meta:
         model = Product
-        fields = ('id', 'name',)
+        fields = ['pk', 'name','option_set','tag_set']
 
-# class ArtistDetailSerializer(ArtistSerializer):
-#     musics = MusicSerializer(source="music_set", many=True)
-#     musics_count = serializers.IntegerField(source='music_set.count')
-    
-#     class Meta(ArtistSerializer.Meta):
-#         fields = ArtistSerializer.Meta.fields + ('musics', 'musics_count',) 
