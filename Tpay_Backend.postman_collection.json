@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "a39d290e-68b6-44ca-be9d-ede732745578",
+		"name": "Tpay_Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Shop",
+			"item": [
+				{
+					"name": "Product List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/shop/products/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"shop",
+								"products",
+								""
+							]
+						},
+						"description": "모든 상품 데이터 응답"
+					},
+					"response": []
+				},
+				{
+					"name": "Product Create",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"TestProduct\",\r\n    \"option_set\": [\r\n        {\r\n            \"name\": \"TestOption1\",\r\n            \"price\": 1000\r\n        },\r\n        {\r\n            \"name\": \"TestOption2\",\r\n            \"price\": 500\r\n        },\r\n        {\r\n            \"name\": \"TestOption3\",\r\n            \"price\": 0\r\n        }\r\n    ],\r\n    \"tag_set\": [\r\n        {\r\n            \"pk\": \"1\",\r\n            \"name\": \"ExistTag\"\r\n        },\r\n        {   \r\n            \"name\": \"NewTag\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/shop/products/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"shop",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Retrieve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/shop/products/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"shop",
+								"products",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/shop/products/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"shop",
+								"products",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Edit",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pk\": 1,\r\n    \"name\": \"TestProduct\",\r\n    \"option_set\": [\r\n        {\r\n            \"pk\": 1,\r\n            \"name\": \"TestOption1\",\r\n            \"price\": 1000\r\n        },\r\n        {\r\n            \"pk\": 2,\r\n            \"name\": \"Edit TestOption2\",\r\n            \"price\": 1500\r\n        },\r\n        {\r\n            \"name\": \"Edit New Option\",\r\n            \"price\": 300\r\n        }\r\n    ],\r\n    \"tag_set\": [\r\n        {\r\n            \"pk\": 1,\r\n            \"name\": \"ExistTag\"\r\n        },\r\n        {\r\n            \"pk\": 2,\r\n            \"name\": \"NewTag\"\r\n        },\r\n        {\r\n            \"name\": \"Edit New Tag\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/shop/products/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"shop",
+								"products",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
