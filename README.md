@@ -7,11 +7,13 @@
 ### 실행방법
 
 ```python -m venv venv
-source venv/Scripts/activate (가상환경 생성)
+python -m venv venv 
 
-pip install -r requirements.txt
+source venv/Scripts/activate 
 
-python manage.py makemigrations
+pip install -r requirements.txt 
+
+python manage.py makemigrations 
 
 python manage.py migrate
 
@@ -32,3 +34,27 @@ http://127.0.0.1:8000/
 
 Tpay_Backend.postman_collection.json : Postman Export 파일입니다.
 
+
+
+
+
+### Docker 실행방법
+
+* 도커가 설치되어 있어야 합니다.
+* Docker Desktop for windows(https://hub.docker.com/editions/community/docker-ce-desktop-windows/ )
+
+```
+# dockerfile이 있는 디렉토리에서
+
+docker pull django
+
+docker build -t tpay .
+
+docker run -it -p 8000:8000 --volume $(PWD):/tpayRecruit --name tpayContainer tpay
+
+# 컨테이너 켜기
+docker start -i tpayContainer
+
+# 컨테이너 끄기
+docker stop tpayContainer
+```
